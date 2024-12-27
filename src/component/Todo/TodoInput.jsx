@@ -1,19 +1,24 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../../actions/actions";
+import { useAddTodoMutation } from "../../rtk_query/endpoints/addTodos";
+import { useGetTodosQuery } from "../../rtk_query/endpoints/getTodos";
 
 const TodoInput = () => {
     const [todo, setTodo] = useState("");
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
   
     const onInputTodo = (e) => {
       setTodo(e.target.value);
     };
+    const {refetch} = useGetTodosQuery()
+    const [addTodo] = useAddTodoMutation();
     //handle submission of todo
     const handleTodoSubmit = (e) => {
       e.preventDefault();
-      dispatch(addTodo({ id: Math.floor(Math.random() * 20) + 1.1, title: todo, completed: false })); // dispatch addTodo
-
+    addTodo({ userId: Math.floor(Math.random() * 20) , todo: todo, completed: false })
+    // .upwrap()
+    // .then(() => refetch())
       setTodo("");
     };
 
