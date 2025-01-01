@@ -1,3 +1,5 @@
+// import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const apiSlice = createApi({
@@ -12,3 +14,10 @@ export const apiSlice = createApi({
 });
 
 // export const {useGetTodosQuery} = apiSlice;
+
+// export const apiSlice = createApi({
+//   reducerPath: "apiSlice",
+//   baseQuery: fetchBaseQuery({ baseUrl: "https://dummyjson.com" }),
+//   tagTypes: ["GetTodosTag"],
+//   endpoints: () => ({}),
+// });
